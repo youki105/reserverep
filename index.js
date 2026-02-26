@@ -8,6 +8,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
+console.log("SUPABASE_ANON_KEY exists?", !!process.env.SUPABASE_ANON_KEY);
+
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
 // In-memory sessions (OK for MVP; later we’ll move this to DB/Redis)
