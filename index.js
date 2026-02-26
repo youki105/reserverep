@@ -1,10 +1,17 @@
 require("dotenv").config();
-
+console.log("DEPLOY VERSION:", new Date().toISOString());
 const express = require("express");
 const bodyParser = require("body-parser");
 const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
+app.get("/", (req, res) => {
+  res.status(200).send("ReserveRep WhatsApp AI is running ✅");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -17,9 +24,6 @@ const SUPABASE_URL =
 
 const SUPABASE_ANON_KEY =
   process.env.SUPABASE_ANON_KEY;
-console.log("ENV SUPA KEYS:", Object.keys(process.env).filter(k => k.toUpperCase().includes("SUPA")));
-console.log("SUPABASE_URL:", SUPABASE_URL);
-console.log("SUPABASE_ANON_KEY exists?", !!SUPABASE_ANON_KEY);
 
 const supabase = createClient(
   SUPABASE_URL,
