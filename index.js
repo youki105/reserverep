@@ -17,7 +17,7 @@ const SUPABASE_URL =
 
 const SUPABASE_ANON_KEY =
   process.env.SUPABASE_ANON_KEY;
-
+console.log("ENV SUPA KEYS:", Object.keys(process.env).filter(k => k.toUpperCase().includes("SUPA")));
 console.log("SUPABASE_URL:", SUPABASE_URL);
 console.log("SUPABASE_ANON_KEY exists?", !!SUPABASE_ANON_KEY);
 
